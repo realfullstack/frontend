@@ -34,14 +34,15 @@ docker buildx build \
     --file ./Build/release/frontend/Dockerfile .
 
 docker buildx build \
-    --tag realfullstack/site-frontend/main_dev:local \
+    --tag realfullstack/frontend/main_dev:local \
     --target main_dev \
     --progress plain \
     --file ./Build/release/frontend/Dockerfile .
 
 docker buildx build \
-    --tag realfullstack/site-frontend/nginx:local \
+    --tag realfullstack/frontend/nginx:local \
     --target nginx \
+    --progress plain \
     --file ./Build/release/frontend/Dockerfile .
 
 ```

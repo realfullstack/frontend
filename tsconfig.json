@@ -19,6 +19,10 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ],
     "paths": {
       "@core/*": [
         "./src/core/*"

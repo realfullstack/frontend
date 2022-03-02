@@ -3,6 +3,7 @@
 .env
 .vscode
 dist
+Makefile
 
 # dependencies
 /node_modules

@@ -15,10 +15,10 @@ const config = {
     scrollRestoration: true,
   },
   serverRuntimeConfig: {
-    BASE_URL: process.env.BASE_URL,
   },
   publicRuntimeConfig: {
-    BASE_URL: process.env.BASE_URL,
+    API_BASEURL: process.env.API_BASEURL,
+    APP_BASEURL: process.env.APP_BASEURL,
   },
 }
 

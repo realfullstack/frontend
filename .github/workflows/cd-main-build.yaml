@@ -1,8 +1,10 @@
 name: cd-main-build
 
-env:
-  GITHUBPKG_EMAIL: realfullstacbot@marian.dev
-  GITHUBPKG_NAME: RealFullStack BOT
+
+# env:
+#   ## Sets environment variable
+#   GITHUBPKG_EMAIL: realfullstacbot@marian.dev
+#   GITHUBPKG_NAME: RealFullStack  
 
 
 on:
@@ -156,8 +158,8 @@ jobs:
           cat kustomization.yaml
       - name: Commit files
         run: |
-          git config --local user.email "${{ env.GITHUBPKG_EMAIL }}"
-          git config --local user.name "${{ env.GITHUBPKG_NAME }}"
+          git config --local user.email "${{ secrets.GITHUBPKG_EMAIL }}"
+          git config --local user.name "${{ secrets.GITHUBPKG_NAME }}"
           git commit -am "Bump deployment ${{ github.ref }}"
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0

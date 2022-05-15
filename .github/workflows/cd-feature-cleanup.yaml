@@ -1,5 +1,9 @@
 name: cd-main-cleanup
 
+env:
+  GITHUBPKG_EMAIL: realfullstacbot@marian.dev
+  GITHUBPKG_NAME: RealFullStack BOT
+
 on:
   delete:
     branches:
@@ -24,8 +28,8 @@ jobs:
           git add kustomize-feature/
       - name: Commit files
         run: |
-          git config --local user.email "${{ secrets.GITHUBPKG_EMAIL }}"
-          git config --local user.name "${{ secrets.GITHUBPKG_NAME }}"
+          git config --local user.email "${{ env.GITHUBPKG_EMAIL }}"
+          git config --local user.name "${{ env.GITHUBPKG_NAME }}"
           git commit -am "Cleanup deployment ${{ github.ref }}"
       - name: Push changes
         uses: ad-m/github-push-action@master

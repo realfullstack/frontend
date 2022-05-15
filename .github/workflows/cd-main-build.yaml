@@ -2,12 +2,12 @@ name: cd-main-build
 on:
   push:
     branches:
-      - dev
-      - qa
+      # - dev
+      # - qa
       - prod
       - feature/*
-    tags:
-      - "v*.*.*"
+    # tags:
+    #   - "v*.*.*"
 
   workflow_dispatch:
 
@@ -140,9 +140,9 @@ jobs:
           cat kustomization.yaml
       - name: Commit files
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Bump deployment"
+          git config --local user.email "${{ secrets.GITHUBPKG_EMAIL }}"
+          git config --local user.name "${{ secrets.GITHUBPKG_NAME }}"
+          git commit -am "Bump deployment ${{ github.ref }}"
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:

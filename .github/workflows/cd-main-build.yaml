@@ -6,8 +6,8 @@ on:
       # - qa
       - prod
       - feature/*
-    tags:
-      - "v*.*.*"
+    # tags:
+    #   - "v*.*.*"
 
   workflow_dispatch:
 

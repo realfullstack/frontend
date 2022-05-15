@@ -26,7 +26,7 @@ export function useApi(): AxiosInstance {
 export type ApiResolverType = (api: AxiosInstance) => any
 export function useApiWithResolver(resolver: ApiResolverType): ApiResolverType {
   const api = useApi()
-  return useMemo(() => resolver(api), [resolver])
+  return useMemo(() => resolver(api), [resolver, api])
 }
 
 export function useSWRApi<Data = unknown>(

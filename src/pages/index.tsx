@@ -1,7 +1,5 @@
 import { PageMeta } from '@components/Pages/Index'
-import { useSWRApi } from '@components/Providers/ApiProvider'
 import type { NextPage } from 'next'
-import { AxiosInstance } from 'axios'
 
 const IndexPage: NextPage = () => {
   return (

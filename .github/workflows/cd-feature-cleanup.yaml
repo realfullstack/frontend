@@ -1,0 +1,35 @@
+name: cd-main-cleanup
+
+on:
+  delete:
+    branches:
+      - feature/*
+
+jobs:
+  cleanup:
+    name: Cleanup
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.ref, 'feature/')
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          repository: realfullstack/frontend-infra
+          ref: master
+          token: ${{ secrets.GITHUBREPO_TOKEN }}
+      - name: Cleanup built overlays
+        run: |
+          ./bin/delete-feature-deployment.sh ${{ github.event.ref }} || exit 1
+          git add argocd-feature/
+          git add kustomize-feature/
+      - name: Commit files
+        run: |
+          git config --local user.email "${{ secrets.GITHUBPKG_EMAIL }}"
+          git config --local user.name "${{ secrets.GITHUBPKG_NAME }}"
+          git commit -am "Cleanup deployment ${{ github.ref }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          repository: realfullstack/frontend-infra
+          github_token: ${{ secrets.GITHUBREPO_TOKEN }}
+          branch: master

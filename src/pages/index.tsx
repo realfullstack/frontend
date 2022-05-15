@@ -4,9 +4,6 @@ import type { NextPage } from 'next'
 import { AxiosInstance } from 'axios'
 
 const IndexPage: NextPage = () => {
-  const { data, error } = useSWRApi<boolean>('/auth/login', (client: AxiosInstance, url: string): Promise<boolean> => {
-    return client.post(url, { params: { code: 'code' } }).then((res) => res.data)
-  })
   return (
     <>
       <PageMeta />
@@ -23,7 +20,6 @@ const IndexPage: NextPage = () => {
           </main>
         </div>
       </div>
-      <pre>{JSON.stringify({ data, error })}</pre>
     </>
   )
 }

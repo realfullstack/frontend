@@ -17,8 +17,8 @@ const config = {
   serverRuntimeConfig: {
   },
   publicRuntimeConfig: {
-    API_BASEURL: process.env.API_BASEURL,
     APP_BASEURL: process.env.APP_BASEURL,
+    API_BASEURL: process.env.API_BASEURL,
   },
 }
 

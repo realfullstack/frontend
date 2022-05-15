@@ -1,5 +1,6 @@
 ### base
-FROM node:14.15.4-alpine3.12 as base
+#FROM node:14.15.4-alpine3.12 as base
+FROM node@sha256:55bf28ea11b18fd914e1242835ea3299ec76f5a034e8c6e42b2ede70064e338c as base
 
 RUN mkdir /app
 

@@ -85,7 +85,7 @@ jobs:
         uses: docker/build-push-action@v2.10.0
         with:
           context: .
-          file: ./Build/release/backend/Dockerfile
+          file: ./Build/release/frontend/Dockerfile
           target: base
           # push: true
           # tags: ghcr.io/${{ github.repository }}/main_dev:buildcache

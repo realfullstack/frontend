@@ -20,13 +20,15 @@ jobs:
       - name: Cleanup built overlays
         run: |
           ./bin/delete-feature-deployment.sh ${{ github.event.ref }} || exit 1
+      - name: Add Changes
+        run: |
           git add argocd-feature/
           git add kustomize-feature/
       - name: Commit files
         run: |
           git config --local user.email "${{ secrets.GITHUBPKG_EMAIL }}"
           git config --local user.name "${{ secrets.GITHUBPKG_NAME }}"
-          git commit -am "Cleanup deployment ${{ github.ref }}"
+          git commit -am "Cleanup deployment ${{ github.event.ref }}"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
